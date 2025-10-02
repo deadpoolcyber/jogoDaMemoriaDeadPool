@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!-- Define o tipo de documento como HTML5 -->
+
+<html lang="pt-br">
+<!-- Início do documento HTML, com idioma português do Brasil -->
+
+<head>
+    <meta charset="UTF-8">
+    <!-- Define a codificação de caracteres como UTF-8 para suportar acentuação -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Permite que o site seja responsivo em dispositivos móveis -->
+
+    <title>Jogo da Memória</title>
+    <!-- Título da aba do navegador -->
+
+    <link rel="stylesheet" href="./CSS/reset.css">
+    <!-- Importa o CSS de reset para padronizar estilos entre navegadores -->
+
+    <link rel="stylesheet" href="./CSS/main.css">
+    <!-- Importa o CSS principal do jogo -->
+</head>
+
+<body>
+    <div class="container">
+        <!-- Container principal que centraliza e organiza todo o conteúdo -->
+
+        <img src="src/logo.png" alt="logo" class="logo">
+        <!-- Imagem da logo do jogo, localizada na pasta src -->
+
+        <h2>Jogo da Memória do DeadPool</h2>
+        <!-- Título do jogo -->
+
+        <div class="game"></div>
+        <!-- Área onde as cartas do jogo serão adicionadas dinamicamente pelo JavaScript -->
+
+        <button class="reset" onclick="window.location.reload()">RESET GAME</button>
+        <!-- Botão para reiniciar o jogo, recarregando a página -->
+    </div>
+
+    <script src="./JavaScripty/enigime.js" defer></script>
+    <!-- Importa o arquivo JavaScript do jogo.
+         O atributo 'defer' garante que o script seja carregado depois que o HTML for lido. -->
+</body>
+</html>

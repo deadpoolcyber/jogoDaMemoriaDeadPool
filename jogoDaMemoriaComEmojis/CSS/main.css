@@ -1,0 +1,119 @@
+/* Corpo da página */
+body{
+    display: flex; /* usa flexbox para centralizar conteúdo */
+    justify-content: center; /* centraliza horizontalmente */
+    align-items: center; /* centraliza verticalmente */
+    min-height: 100vh; /* altura mínima igual à altura da tela */
+    background-color: #a10202; /* cor de fundo da página */
+    user-select: none; /* impede seleção de texto/carta */
+    font-family: Arial, sans-serif; /* fonte padrão */
+}
+
+/* Container principal que envolve todo o jogo */
+.container{
+    position:relative; /* necessário para posicionamento interno */
+    display: flex; /* usa flexbox */
+    flex-direction: column; /* organiza elementos em coluna */
+    justify-content: center; /* centraliza verticalmente dentro do container */
+    align-items: center; /* centraliza horizontalmente dentro do container */
+    gap: 30px; /* espaço entre elementos dentro do container */
+    background: linear-gradient( /* fundo com gradiente */
+        325deg,
+        #03001e 0%,
+        #c00303 30%,
+        #ec3838 70%,
+        #fdefef 100%
+    );
+    padding: 40px 60px; /* espaçamento interno */
+    border-radius: 20px; /* cantos arredondados do container */
+}
+
+/* Estilo da logo */
+.logo {
+    width: 200px;        /* ajusta o tamanho da logo */
+    height: auto;        /* mantém proporção da imagem */
+    margin-bottom: 20px; /* espaço entre a logo e o título */
+    border-radius: 15px; /* cantos arredondados da imagem */
+}
+
+/* Título do jogo */
+h2{
+    font-size: 2.5em; /* tamanho da fonte */
+    color: #fff; /* cor do texto */
+    text-transform: uppercase; /* deixa o texto em maiúsculas */
+    letter-spacing: 0.2em; /* espaço entre letras */
+}
+
+/* Botão de reset do jogo */
+.reset{
+    padding: 15px 20px; /* espaçamento interno */
+    width: 100%; /* ocupa toda a largura do container */
+    color: #000000; /* cor do texto */
+    background-color: #fff; /* cor de fundo do botão */
+    border:none; /* remove borda padrão */
+    font-size: 1.2em; /* tamanho da fonte */
+    letter-spacing: 0.1em; /* espaçamento entre letras */
+    text-transform: uppercase; /* texto em maiúsculas */
+    cursor: pointer; /* cursor de mão ao passar em cima */
+    font-weight: 600; /* negrito */
+    border-radius: 10px; /* cantos arredondados do botão */
+}
+
+/* Estilo quando o botão está em foco */
+.reset:focus{
+    color: #000000; /* mantém texto preto */
+    background-color: #000000; /* muda fundo para preto */
+}
+
+/* Área do jogo onde as cartas ficam */
+.game{
+    width: 430px; /* largura da área do jogo */
+    height: 430px; /* altura da área do jogo */
+    display: flex; /* flexbox para organizar as cartas */
+    flex-wrap: wrap; /* permite quebrar linhas */
+    gap: 10px; /* espaço entre as cartas */
+    perspective: 1000px; /* efeito 3D para o flip das cartas */
+}
+
+/* Cada carta */
+.item {
+    position: relative; /* necessário para o pseudo-elemento e imagem */
+    width: 100px; /* largura da carta */
+    height: 100px; /* altura da carta */
+    border-radius: 10px; /* cantos arredondados da carta */
+    cursor: pointer; /* cursor de mão ao passar sobre a carta */
+    transform-style: preserve-3d; /* necessário para efeito 3D */
+    transition: transform 0.5s; /* animação de transição */
+}
+
+/* Imagem da carta (frente) */
+.item img {
+    position: absolute; /* posicionamento absoluto dentro da carta */
+    width: 100%; /* ocupa toda a carta */
+    height: 100%; /* ocupa toda a carta */
+    object-fit: cover; /* mantém proporção sem distorcer */
+    border-radius: 10px; /* arredonda cantos da imagem */
+    backface-visibility: hidden; /* esconde a face de trás durante o flip */
+    transform: rotateY(180deg); /* gira 180 graus inicialmente (costas da carta) */
+}
+
+/* Costas da carta usando pseudo-elemento */
+.item::before {
+    content: ""; /* necessário para criar o pseudo-elemento */
+    position: absolute; /* posiciona sobre a carta */
+    inset: 0; /* ocupa toda a carta */
+    background: #020001; /* cor de fundo das costas da carta */
+    border-radius: 10px; /* cantos arredondados */
+    backface-visibility: hidden; /* mantém escondido durante o flip */
+}
+
+/* Carta aberta */
+.item.boxOpen {
+    transform: rotateY(180deg); /* gira a carta para mostrar a frente */
+}
+
+/* Carta que já foi combinada */
+.item.boxMatch {
+    transform: rotateY(180deg); /* mantém a frente visível */
+    pointer-events: none; /* não permite mais clicar na carta */
+}
